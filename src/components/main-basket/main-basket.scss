@@ -1,0 +1,8 @@
+.main {
+  height: 1250px;
+}
+
+.main__title {
+  @include title;
+  padding-bottom: 20px;
+}

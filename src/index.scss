@@ -1,2 +1,10 @@
 @import "scss/colors";
 @import "scss/global";
+@import "scss/mixins";
+@import "src/components/header/header";
+@import "src/components/main-catalog/main-catalog";
+@import "src/components/main-basket/main-basket";
+@import "src/components/footer/footer";
+@import "src/components/social/social";
+@import "src/components/breadcrumbs/breadcrumbs";
+@import "src/components/logo/logo";

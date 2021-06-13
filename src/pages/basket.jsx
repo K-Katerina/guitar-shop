@@ -1,9 +1,9 @@
 import React from 'react';
 import {Footer} from '../components/footer/footer';
 import {Header} from '../components/header/header';
-import {MainCatalog as Main} from '../components/main-catalog/main-catalog';
+import {MainBasket as Main} from '../components/main-basket/main-basket';
 
-const Catalog = () => {
+const Basket = () => {
     return (
         <React.Fragment>
             <Header/>
@@ -13,4 +13,4 @@ const Catalog = () => {
     );
 };
 
-export {Catalog};
+export {Basket};
