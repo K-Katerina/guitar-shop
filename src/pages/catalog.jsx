@@ -1,12 +1,14 @@
 import React from 'react';
+import {Footer} from '../components/footer/footer';
+import {Header} from '../components/header/header';
+import {Main} from '../components/main/main';
 
 const Catalog = () => {
     return (
         <React.Fragment>
-            {/*<Header/>*/}
-            {/*<Main/>*/}
-            {/*<Footer/>*/}
-            <h1 className="wrapper">Guitar Shop</h1>
+            <Header/>
+            <Main/>
+            <Footer/>
         </React.Fragment>
     );
 };

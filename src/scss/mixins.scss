@@ -5,6 +5,7 @@
   line-height: 25px;
   font-weight: 700;
   color: $color-service;
+  letter-spacing: 0.05em;
 }
 
 @mixin flex-row-center {
@@ -14,10 +15,8 @@
   flex-grow: 1;
   justify-content: center;
   align-content: center;
-
-  font-size: 16px;
-  line-height: 20px;
-  font-weight: 400;
+  align-items: center;
+  text-align: center;
 }
 
 @mixin button {
