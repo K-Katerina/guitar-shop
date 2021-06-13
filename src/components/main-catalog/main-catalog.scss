@@ -6,3 +6,13 @@
   @include title;
   padding-bottom: 20px;
 }
+
+.main__content {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+}
+
+.main__breadcrumbs {
+  margin-bottom: 49px;
+}

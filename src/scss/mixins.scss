@@ -21,80 +21,105 @@
 
 @mixin button {
   cursor: pointer;
-  color: $color-service--lightest;
-  background-color: $color-main;
-  max-width: 200px;
+  color: $color-background;
+  background-color: $color-service--lightest;
+  min-width: 120px;
+  height: 30px;
   text-decoration: none;
-  font-size: 16px;
-  line-height: 25px;
-  font-weight: 500;
+  text-transform: uppercase;
+
+  font-size: 12px;
+  line-height: 14px;
+  font-weight: 700;
 
   border: none;
   border-radius: 4px;
   display: inline-block;
   vertical-align: middle;
   text-align: center;
-  padding: 16px 22px;
 
   &:hover,
   &:focus {
-    background-color: lighten($color-main, 5);
+    background-color: $color-service--light;
     transition: 0.3s ease;
   }
 
   &:active {
-    color: $color-service--light;
+    background-color: $color-service--lighten;
     transition: 0.3s ease;
   }
 
   &[disabled] {
-    background-color: $color-service--light;
-    color: $color-service--lighten;
+    color: $color-service--lightest;
     cursor: not-allowed;
+  }
+}
+
+@mixin button-orange {
+  @include button-outline;
+  background-color: $color-main;
+  border: 1px $color-main solid;
+  color: $color-background;
+
+  &:hover,
+  &:focus {
+    background-color: $color-orange--light;
+    border-color: $color-orange--light;
+    transition: 0.3s ease;
+    color: $color-background;
+  }
+
+  &:active {
+    background-color: $color-orange--dark;
+    border-color: $color-orange--dark;
+    transition: 0.3s ease;
+    color: $color-background;
   }
 }
 
 @mixin button-outline {
   @include button;
-  background-color: $color-service--lightest;
-  color: $color-service;
+  min-width: 220px;
+  background-color: transparent;
+  text-transform: none;
+  border: 1px $color-service--light solid;
+  color: $color-service--light;
 
   display: inline-block;
 
   &:hover,
   &:focus {
-    color: $color-background;
-    background-color: $color-main;
+    color: $color-service--lighten;
+    border-color: $color-service--lighten;
+    background-color: transparent;
+    transition: 0.3s ease;
+  }
+
+  &:active {
+    color: $color-service--lightest;
+    border-color: $color-service--lightest;
+    background-color: transparent;
+    transition: 0.3s ease;
   }
 }
 
-@mixin mandatory {
-  position: absolute;
-  content: '*';
-  left: 10px;
-  top: 10px;
-  z-index: 60;
-
-  width: 12px;
-  height: 12px;
-  color: $color-main;
+@mixin button--small {
+  @include button;
+  text-transform: none;
+  min-width: 87px;
+  height: 23px;
 }
 
-@mixin error-message {
-  position: absolute;
-  left: 0;
-  top: -19px;
-  z-index: 60;
-
-  font-size: 14px;
-  line-height: 19px;
-  font-weight: 400;
-  color: $color-main;
+@mixin button-orange--small {
+  @include button-orange;
+  text-transform: none;
+  min-width: 87px;
+  height: 23px;
 }
 
 @mixin input-field {
-  font-size: 18px;
-  line-height: 25px;
+  font-size: 16px;
+  line-height: 20px;
   font-weight: 500;
   color: black;
   background-color: transparent;
@@ -102,31 +127,29 @@
   text-align: center;
   vertical-align: middle;
   display: inline-block;
+  text-transform: uppercase;
 
   width: 100%;
-  padding: 17px;
-  border: 1px $color-service solid;
+  padding: 10px;
+  min-height: 24px;
+  margin-bottom: 12px;
+  border: 1px $color-service--lighten solid;
 
   &:focus,
   &:hover {
-    border-color: $color-main--dark;
+    border-color: $color-service--light;
+  }
+
+  &:active {
+    border-color: $color-service--lightest;
   }
 }
 
 @mixin label {
-  font-size: 18px;
-  line-height: 21px;
-  font-weight: 400;
-  color: $color-service--light;
-  display: block;
-  padding-bottom: 8px;
-}
-
-@mixin desc {
   font-size: 16px;
-  line-height: 18px;
+  line-height: 19px;
+  letter-spacing: 0.03em;
   font-weight: 400;
-  color: $color-service--light;
+  color: $color-service;
   display: block;
-  padding-top: 7px;
 }

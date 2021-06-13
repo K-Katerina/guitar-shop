@@ -1,0 +1,68 @@
+.input-checkbox {
+  @include label;
+  padding-left: 20px;
+  position: relative;
+  cursor: pointer;
+
+  &:focus span:before,
+  &:focus input:checked + span:before,
+  &:hover span:before,
+  &:hover input:checked + span:before {
+    border-color: $color-service--light;
+  }
+
+  &:active span:before,
+  &:active input:checked + span:before {
+    border-color: $color-service--lightest;
+  }
+}
+
+.input-checkbox input:disabled + span {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+.input-checkbox input:disabled + span:after {
+  opacity: 0;
+  cursor: not-allowed;
+}
+
+.input-checkbox input:disabled + span:before,
+.input-checkbox:focus input:disabled + span:before,
+.input-checkbox:hover input:disabled + span:before,
+.input-checkbox:active input:disabled + span:before {
+  background-color: $color-background--light;
+  border-color: $color-service--lightest;
+  cursor: not-allowed;
+}
+
+.input-checkbox input {
+  display: none;
+}
+
+.input-checkbox span:before {
+  content: '';
+  height: 16px;
+  width: 16px;
+  border-radius: 2px;
+  display: inline-block;
+  position: absolute;
+  border: 1px $color-service--lighten solid;
+  background-color: transparent;
+  padding: 3px;
+  top: 0;
+  left: 0;
+}
+
+.input-checkbox input:checked + span:after {
+  content: '\2304';
+  position: absolute;
+  top: -6px;
+  left: 3px;
+  font-size: 16px;
+  color: $color-service--light;
+}
+
+.input-checkbox input:checked + span:before {
+  border: 1px solid $color-service--lightest;
+}
