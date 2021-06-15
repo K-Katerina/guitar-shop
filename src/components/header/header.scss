@@ -4,6 +4,10 @@
   position: relative;
   margin-bottom: 213px;
 
+  &--basket {
+    margin-bottom: 238px;
+  }
+
   &::before {
     position: absolute;
     content: "";

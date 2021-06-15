@@ -6,7 +6,7 @@ import {MainBasket as Main} from '../components/main-basket/main-basket';
 const Basket = () => {
     return (
         <React.Fragment>
-            <Header/>
+            <Header className="header--basket"/>
             <Main/>
             <Footer/>
         </React.Fragment>

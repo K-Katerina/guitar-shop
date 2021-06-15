@@ -42,7 +42,7 @@ const Filters = ({className}) => {
                     />
                 ))}
             </div>
-            <Button className="filters__submit" nameButton="Показать"/>
+            <Button className="filters__submit" nameButton={String('Показать').toUpperCase()}/>
         </div>
     );
 };

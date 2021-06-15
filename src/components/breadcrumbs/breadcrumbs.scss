@@ -2,10 +2,11 @@
   @include flex-row-center;
   justify-content: flex-start;
   list-style: none;
-}
+  margin-bottom: 50px;
 
-.breadcrumbs__item{
-
+  &--basket {
+    margin-bottom: 27px;
+  }
 }
 
 .breadcrumbs__link {

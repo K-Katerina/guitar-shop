@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types';
 import React from 'react';
 import {Link} from 'react-router-dom';
 import {AppRoute} from '../../const';
@@ -6,11 +7,11 @@ import {ReactComponent as IconSearch} from './icon-search.svg';
 import {ReactComponent as IconBasket} from './icon-basket.svg';
 import {Logo} from '../logo/logo';
 
-const Header = () => {
+const Header = ({className}) => {
     const basketItemsCount = 2;
 
     return (
-        <header className="header">
+        <header className={`header ${className}`}>
             <nav className="header__navigation menu wrapper">
                 <Logo className="menu__logo"/>
 
@@ -50,6 +51,10 @@ const Header = () => {
             </nav>
         </header>
     );
+};
+
+Header.propTypes = {
+    className: PropTypes.string
 };
 
 export {Header};
