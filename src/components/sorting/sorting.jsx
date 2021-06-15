@@ -7,8 +7,8 @@ const Sorting = ({className}) => {
             <p className="sorting__title">
                 Сортировать:&nbsp;
             </p>
-            <a>&nbsp;по цене&nbsp;</a>
-            <a>&nbsp;по популярности&nbsp;</a>
+            <a>&nbsp;&nbsp;&nbsp;по цене&nbsp;</a>
+            <a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;по популярности&nbsp;</a>
         </div>
     );
 };

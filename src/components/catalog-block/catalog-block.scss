@@ -1,7 +1,24 @@
 .catalog-block {
   width: 100%;
+  padding-left: 12px;
 }
 
 .catalog-block__sorting {
   padding-bottom: 30px;
+}
+
+.products {
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-start;
+  flex-wrap: wrap;
+}
+
+.products__item {
+  margin-right: 20px;
+  margin-bottom: 30px;
+}
+
+.products__item:nth-child(3n) {
+  margin-right: 0;
 }

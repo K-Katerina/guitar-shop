@@ -1,8 +1,10 @@
 .input-checkbox {
   @include label;
-  padding-left: 20px;
+  padding-left: 34px;
   position: relative;
   cursor: pointer;
+  padding-bottom: 15px;
+  padding-top: 2px;
 
   &:focus span:before,
   &:focus input:checked + span:before,
@@ -42,12 +44,12 @@
 
 .input-checkbox span:before {
   content: '';
-  height: 16px;
-  width: 16px;
+  height: 24px;
+  width: 24px;
   border-radius: 2px;
   display: inline-block;
   position: absolute;
-  border: 1px $color-service--lighten solid;
+  border: 0.7px $color-service--lighten solid;
   background-color: transparent;
   padding: 3px;
   top: 0;
@@ -57,12 +59,12 @@
 .input-checkbox input:checked + span:after {
   content: '\2304';
   position: absolute;
-  top: -6px;
-  left: 3px;
-  font-size: 16px;
+  top: -2px;
+  left: 6px;
+  font-size: 20px;
   color: $color-service--light;
 }
 
 .input-checkbox input:checked + span:before {
-  border: 1px solid $color-service--lightest;
+  border: 0.7px solid $color-service--lighten;
 }

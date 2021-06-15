@@ -20,6 +20,11 @@
 }
 
 @mixin button {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-content: center;
   cursor: pointer;
   color: $color-background;
   background-color: $color-service--lightest;
@@ -33,8 +38,7 @@
   font-weight: 700;
 
   border: none;
-  border-radius: 4px;
-  display: inline-block;
+  border-radius: 2px;
   vertical-align: middle;
   text-align: center;
 
@@ -85,8 +89,6 @@
   border: 1px $color-service--light solid;
   color: $color-service--light;
 
-  display: inline-block;
-
   &:hover,
   &:focus {
     color: $color-service--lighten;
@@ -118,22 +120,22 @@
 }
 
 @mixin input-field {
-  font-size: 16px;
-  line-height: 20px;
+  font-size: 14px;
+  line-height: 14px;
   font-weight: 500;
   color: black;
   background-color: transparent;
-  border-radius: 4px;
+  border-radius: 2px;
   text-align: center;
   vertical-align: middle;
   display: inline-block;
   text-transform: uppercase;
 
   width: 100%;
-  padding: 10px;
+  padding: 5px;
   min-height: 24px;
   margin-bottom: 12px;
-  border: 1px $color-service--lighten solid;
+  border: 0.7px $color-service--lighten solid;
 
   &:focus,
   &:hover {
