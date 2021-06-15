@@ -2,10 +2,14 @@
   @include flex-row-center;
   background-color: $color-background--dark;
   position: relative;
-  margin-top: 80px;
+  margin-top: 139px;
   padding-top: 61px;
   padding-bottom: 61px;
   z-index: 15;
+
+  &--basket {
+    margin-top: 157px;
+  }
 
   &::before {
     position: absolute;

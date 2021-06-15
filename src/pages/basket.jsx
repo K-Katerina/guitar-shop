@@ -8,7 +8,7 @@ const Basket = () => {
         <React.Fragment>
             <Header className="header--basket"/>
             <Main/>
-            <Footer/>
+            <Footer className="footer--basket"/>
         </React.Fragment>
     );
 };

@@ -1,10 +1,11 @@
+import PropTypes from 'prop-types';
 import React from 'react';
 import {Logo} from '../logo/logo';
 import {Social} from '../social/social';
 
-const Footer = () => {
+const Footer = ({className}) => {
     return (
-        <footer className="footer">
+        <footer className={`footer ${className}`}>
             <div className="footer__info info wrapper">
 
                 <div className="info__container">
@@ -93,6 +94,10 @@ const Footer = () => {
             </div>
         </footer>
     );
+};
+
+Footer.propTypes = {
+    className: PropTypes.string
 };
 
 export {Footer};
