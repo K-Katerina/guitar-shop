@@ -1,6 +1,7 @@
 import PropTypes from 'prop-types';
 import React from 'react';
 import electroGuitar3 from '../../assets/electro_1.png';
+import {ButtonsWithNumber} from '../buttons-with-number/buttons-with-number';
 import {CloseButton} from '../close-button/close-button';
 
 const ProductBasket = ({className}) => {
@@ -18,7 +19,7 @@ const ProductBasket = ({className}) => {
                 <span className="product-basket__type">Электрогитара, 6 струнная </span>
             </div>
             <div className="product-basket__price">31000₽</div>
-            <div className="product-basket__wrapper-buttons">+/-</div>
+            <ButtonsWithNumber className="product-basket__wrapper-buttons" onChange={()=>{}}/>
             <div className="product-basket__total">31000₽</div>
         </article>
     );
