@@ -59,7 +59,7 @@
 .input-checkbox input:checked + span:after {
   content: '\2304';
   position: absolute;
-  top: -2px;
+  top: -1px;
   left: 6px;
   font-size: 20px;
   color: $color-service--light;
