@@ -3,6 +3,7 @@ import {AppRoute} from '../../const';
 import {Breadcrumbs} from '../breadcrumbs/breadcrumbs';
 import {CatalogBlock} from '../catalog-block/catalog-block';
 import {Filters} from '../filters/filters';
+import {Pagination} from '../pagination/pagination';
 
 const MainCatalog = () => {
     const breadcrumbs = [{title: 'Каталог', url: AppRoute.CATALOG}];
@@ -15,6 +16,7 @@ const MainCatalog = () => {
                 <Filters className="main__filters"/>
                 <CatalogBlock className="main__catalog"/>
             </div>
+            <Pagination className="main__pagination"/>
         </main>
     );
 };

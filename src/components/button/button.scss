@@ -8,4 +8,10 @@
     background-repeat: no-repeat;
     background-position: 7px 50%;
   }
+
+  &--page {
+    min-width: 24px;
+    max-width: 24px;
+    height: 100%;
+  }
 }
