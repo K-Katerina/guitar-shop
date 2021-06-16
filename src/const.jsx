@@ -3,7 +3,10 @@ export const AppRoute = {
     BASKET: '/basket',
     ROOT: '/'
 };
+
 export const Actions = {
     OPEN_MODAL: 'OPEN_MODAL',
     SAVE_NEW_REVIEW: 'SAVE_NEW_REVIEW'
 };
+
+export const ESC_CODE = 27;

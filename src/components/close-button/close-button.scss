@@ -15,4 +15,11 @@
   background-size: contain;
 
   content: "";
+
+  &--modal {
+    z-index: 90;
+    top: 23px;
+    right: 23px;
+    left: auto;
+  }
 }

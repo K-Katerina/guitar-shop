@@ -60,10 +60,6 @@
 
 @mixin button-orange {
   @include button-outline;
-  font-size: 16px;
-  font-weight: 700;
-  line-height: 15px;
-  letter-spacing: 0.05em;
 
   background-color: $color-main;
   border: 1px $color-main solid;
@@ -91,6 +87,10 @@
   background-color: transparent;
   border: 1px $color-service--light solid;
   color: $color-service--light;
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 15px;
+  letter-spacing: 0.05em;
 
   &:hover,
   &:focus {

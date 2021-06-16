@@ -6,7 +6,7 @@ import {Input} from '../input/input';
 
 const Filters = ({className}) => {
     const guitarTypes = ['Акустические гитары', 'Электрогитары', 'Укулеле'];
-    const stringsCount = [4, 6, 7, 12];
+    const stringsCount = ['4', '6', '7', '12'];
     return (
         <div className={`filters ${className}`}>
             <h2 className="filters__title">Фильтр</h2>
@@ -42,7 +42,7 @@ const Filters = ({className}) => {
                     />
                 ))}
             </div>
-            <Button className="filters__submit" nameButton={String('Показать').toUpperCase()}/>
+            <Button className="filters__submit" onClick={()=>{}} nameButton={String('Показать').toUpperCase()}/>
         </div>
     );
 };

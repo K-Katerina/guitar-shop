@@ -27,7 +27,7 @@ const ProductCard = ({className}) => {
             </div>
             <div className="product__info">
                 <a href="#" className="product__button">Подробнее</a>
-                <Button nameButton="Купить" className="product__buy"/>
+                <Button nameButton="Купить" onClick={()=>{}} className="product__buy"/>
             </div>
         </article>
     );
