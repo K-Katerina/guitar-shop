@@ -43,12 +43,12 @@ export const StringsCount = {
     TWELVE: '12'
 };
 
-export const SortingType = {
+export const SortingTypes = {
     PRICE: 'PRICE',
     POPULAR: 'POPULAR',
 };
 
-export const SortingOrder = {
+export const SortingOrders = {
     TO_LOW: 'high to low',
     TO_HIGH: 'low to high',
 };

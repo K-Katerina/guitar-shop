@@ -5,7 +5,7 @@
   line-height: 25px;
   font-weight: 700;
   color: $color-service;
-  letter-spacing: 0.05em;
+  letter-spacing: 0.03em;
 }
 
 @mixin flex-row-center {
@@ -151,10 +151,10 @@
 }
 
 @mixin label {
-  font-size: 12px;
-  line-height: 12px;
+  font-size: 16px;
+  line-height: 19px;
   letter-spacing: 0.03em;
   font-weight: 400;
-  color: $color-service--lighten;
+  color: $color-service;
   display: block;
 }

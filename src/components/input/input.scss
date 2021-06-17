@@ -8,6 +8,8 @@
   }
 
   &--error .input__label {
+    font-size: 12px;
+    line-height: 12px;
     color: $color-error;
   }
 }

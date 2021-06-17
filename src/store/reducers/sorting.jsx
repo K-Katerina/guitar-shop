@@ -1,11 +1,12 @@
-import {Actions, SortingOrder, SortingType} from '../../const';
+import {Actions, SortingTypes} from '../../const';
 
 const initialState = {
-    sortingType: [SortingType.POPULAR],
-    sortingOrder: [SortingOrder.TO_LOW],
+    sortingType: null,
+    sortingOrder: null,
 };
 
 const sorting = (state = initialState, action) => {
+    console.log(state.sortingType);
     switch (action.type) {
         case Actions.CHANGE_SORTING_TYPE:
             return {
@@ -15,7 +16,8 @@ const sorting = (state = initialState, action) => {
         case Actions.CHANGE_SORTING_ORDER:
             return {
                 ...state,
-                sortingOrder: action.payload
+                sortingOrder: action.payload,
+                sortingType: state.sortingType ? state.sortingType : SortingTypes.PRICE
             };
         default:
             return state;
