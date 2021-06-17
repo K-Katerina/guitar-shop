@@ -1,11 +1,13 @@
 import PropTypes from 'prop-types';
 import React from 'react';
 import {useSelector} from 'react-redux';
+import {PAGE_ITEM_COUNT} from '../../const';
 import {ProductCard} from '../product-card/product-card';
 import {Sorting} from '../sorting/sorting';
 
 const CatalogBlock = ({className}) => {
-    const guitars =  useSelector(state => state.DATA.currentGuitars);
+    const activePage = useSelector(state => state.DATA.activePage);
+    const guitars = useSelector(state => state.DATA.currentGuitars).slice((activePage - 1) * PAGE_ITEM_COUNT, activePage * PAGE_ITEM_COUNT);
 
     return (
         <div className={`catalog-block ${className}`}>
