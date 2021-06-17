@@ -4,7 +4,7 @@ import {Button} from '../button/button';
 
 const getButtonWithPage = (number, activePage) => {
     return (
-        <Button className={`button--page pagination__button ${activePage === number && 'pagination__button--active'}`} onClick={()=>{}} nameButton={number}/>
+        <Button className={`button--page pagination__button ${activePage === number && 'pagination__button--active'}`} onClick={()=>{}} nameButton={String(number)}/>
     );
 };
 

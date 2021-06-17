@@ -1,10 +1,3 @@
-import acoustic from './assets/acoustic_1.png';
-import electro from './assets/electro_1.png';
-import electro2 from './assets/electro_2.png';
-import electro3 from './assets/electro_3.png';
-import electro4 from './assets/electro_4.png';
-import ukulele from './assets/ukulele_1.png';
-
 export const AppRoute = {
     CATALOG: '/',
     BASKET: '/basket',
@@ -12,16 +5,33 @@ export const AppRoute = {
 };
 
 export const Actions = {
-    OPEN_MODAL: 'OPEN_MODAL',
-    SAVE_NEW_REVIEW: 'SAVE_NEW_REVIEW'
+    CHANGE_BASKET: 'CHANGE_BASKET',
+    CHANGE_GUITAR_TYPES: 'CHANGE_GUITAR_TYPES',
+    CHANGE_PAGE: 'CHANGE_PAGE',
+    CHANGE_PRICE_FROM: 'CHANGE_PRICE_FROM',
+    CHANGE_PRICE_TO: 'CHANGE_PRICE_TO',
+    CHANGE_STRINGS_COUNT: 'CHANGE_STRINGS_COUNT',
+    CHANGE_VISIBILITY_POPUP_ADD_TO_BASKET: 'CHANGE_VISIBILITY_POPUP_ADD_TO_BASKET',
+    CHANGE_VISIBILITY_POPUP_REMOVE_FROM_BASKET: 'CHANGE_VISIBILITY_POPUP_REMOVE_FROM_BASKET',
+    CHANGE_VISIBILITY_POPUP_SUCCESS_IN_BASKET: 'CHANGE_VISIBILITY_POPUP_SUCCESS_IN_BASKET',
+    CHANGE_SORTING_TYPE: 'CHANGE_SORTING_TYPE',
+    CHANGE_SORTING_ORDER: 'CHANGE_SORTING_ORDER',
 };
 
 export const ESC_CODE = 27;
+
+export const DEFAULT_PAGE = 1;
 
 export const GuitarType = {
     ELECTRO: 'ELECTRO',
     UKULELE: 'UKULELE',
     ACOUSTIC: 'ACOUSTIC'
+};
+
+export const GuitarTypeNames = {
+    ELECTRO: 'Электрогитара',
+    UKULELE: 'Укулеле',
+    ACOUSTIC: 'Акустическая гитара'
 };
 
 export const StringsCount = {
@@ -31,248 +41,12 @@ export const StringsCount = {
     TWELVE: '12'
 };
 
-export const GUITARS = [
-    {
-        vendorCode: 'SO757575',
-        name: 'Честер Bass',
-        type: GuitarType.ELECTRO,
-        reviewsCount: 15,
-        stringsCount: StringsCount.SEVEN,
-        price: 17500,
-        image: electro,
-    },
-    {
-        vendorCode: 'TK129049',
-        name: 'СURT Z300',
-        type: GuitarType.ELECTRO,
-        reviewsCount: 9,
-        stringsCount: StringsCount.SEVEN,
-        price: 29500,
-        image: electro2,
-    },
-    {
-        vendorCode: 'RO111111',
-        name: 'Roman LX',
-        type: GuitarType.UKULELE,
-        reviewsCount: 21,
-        stringsCount: StringsCount.FOUR,
-        price: 6800,
-        image: ukulele,
-    },
-    {
-        vendorCode: 'TK436457',
-        name: 'СURT T300',
-        type: GuitarType.ELECTRO,
-        reviewsCount: 15,
-        stringsCount: StringsCount.SIX,
-        price: 30000,
-        image: electro3,
-    },
-    {
-        vendorCode: 'DI192138',
-        name: 'Dania Super',
-        type: GuitarType.ACOUSTIC,
-        reviewsCount: 5,
-        stringsCount: StringsCount.SEVEN,
-        price: 3500,
-        image: acoustic,
-    },
-    {
-        vendorCode: 'SO934345',
-        name: 'Честер WX ',
-        type: GuitarType.ELECTRO,
-        reviewsCount: 17,
-        stringsCount: StringsCount.SIX,
-        price: 15300,
-        image: electro,
-    },
-    {
-        vendorCode: 'DI082347',
-        name: 'Dania VX',
-        type: GuitarType.UKULELE,
-        reviewsCount: 5,
-        stringsCount: StringsCount.FOUR,
-        price: 2200,
-        image: ukulele,
-    },
-    {
-        vendorCode: 'SO135646',
-        name: 'Честер Plus ',
-        type: GuitarType.ELECTRO,
-        reviewsCount: 27,
-        stringsCount: StringsCount.FOUR,
-        price: 30000,
-        image: electro4,
-    },
-    {
-        vendorCode: 'VO154751',
-        name: 'Виолана 300',
-        type: GuitarType.ACOUSTIC,
-        reviewsCount: 3,
-        stringsCount: StringsCount.SEVEN,
-        price: 1700,
-        image: acoustic,
-    },
-    {
-        vendorCode: 'TK244556',
-        name: 'СURT Clasic',
-        type: GuitarType.ELECTRO,
-        reviewsCount: 20,
-        stringsCount: StringsCount.FOUR,
-        price: 23000,
-        image: electro,
-    },
-    {
-        vendorCode: 'TK134663',
-        name: 'СURT Z250',
-        type: GuitarType.ELECTRO,
-        reviewsCount: 19,
-        stringsCount: StringsCount.FOUR,
-        price: 18700,
-        image: electro,
-    },
-    {
-        vendorCode: 'SO123212',
-        name: 'Честер 7X',
-        type: GuitarType.ELECTRO,
-        reviewsCount: 30,
-        stringsCount: StringsCount.SEVEN,
-        price: 35000,
-        image: electro,
-    },
-    {
-        vendorCode: 'SO123234',
-        name: 'Честер 6V',
-        type: GuitarType.ELECTRO,
-        reviewsCount: 28,
-        stringsCount: StringsCount.SIX,
-        price: 14900,
-        image: electro,
-    },
-    {
-        vendorCode: 'VO519510',
-        name: 'Виолана Mix',
-        type: GuitarType.ACOUSTIC,
-        reviewsCount: 7,
-        stringsCount: StringsCount.SIX,
-        price: 7600,
-        image: acoustic,
-    },
-    {
-        vendorCode: 'VO457369',
-        name: 'Виолана 250x',
-        type: GuitarType.ACOUSTIC,
-        reviewsCount: 19,
-        stringsCount: StringsCount.SIX,
-        price: 6500,
-        image: acoustic,
-    },
-    {
-        vendorCode: 'FB625903',
-        name: 'Фабио Лайт',
-        type: GuitarType.ACOUSTIC,
-        reviewsCount: 26,
-        stringsCount: StringsCount.SEVEN,
-        price: 12000,
-        image: acoustic,
-    },
-    {
-        vendorCode: 'FB576948',
-        name: 'Фабио L100',
-        type: GuitarType.ACOUSTIC,
-        reviewsCount: 31,
-        stringsCount: StringsCount.SEVEN,
-        price: 9900,
-        image: acoustic,
-    },
-    {
-        vendorCode: 'LU012032',
-        name: 'Liana Z200',
-        type: GuitarType.ACOUSTIC,
-        reviewsCount: 28,
-        stringsCount: StringsCount.TWELVE,
-        price: 8900,
-        image: acoustic,
-    },
-    {
-        vendorCode: 'LU546853',
-        name: 'Liana Z100',
-        type: GuitarType.ACOUSTIC,
-        reviewsCount: 34,
-        stringsCount: StringsCount.TWELVE,
-        price: 10500,
-        image: acoustic,
-    },
-    {
-        vendorCode: 'LU458283',
-        name: 'Liana Z300',
-        type: GuitarType.ACOUSTIC,
-        reviewsCount: 9,
-        stringsCount: StringsCount.SIX,
-        price: 13300,
-        image: acoustic,
-    },
-    {
-        vendorCode: 'RO324341',
-        name: 'Roman RX',
-        type: GuitarType.UKULELE,
-        reviewsCount: 37,
-        stringsCount: StringsCount.FOUR,
-        price: 4800,
-        image: ukulele,
-    },
-    {
-        vendorCode: 'RO214235',
-        name: 'Roman TX',
-        type: GuitarType.UKULELE,
-        reviewsCount: 5,
-        stringsCount: StringsCount.FOUR,
-        price: 1900,
-        image: ukulele,
-    },
-    {
-        vendorCode: 'DI132414',
-        name: 'Dania U100',
-        type: GuitarType.UKULELE,
-        reviewsCount: 23,
-        stringsCount: StringsCount.FOUR,
-        price: 2500,
-        image: ukulele,
-    },
-    {
-        vendorCode: 'DI934754',
-        name: 'Dania WR',
-        type: GuitarType.UKULELE,
-        reviewsCount: 3,
-        stringsCount: StringsCount.FOUR,
-        price: 3800,
-        image: ukulele,
-    },
-    {
-        vendorCode: 'DI034292',
-        name: 'Dania LE',
-        type: GuitarType.UKULELE,
-        reviewsCount: 10,
-        stringsCount: StringsCount.FOUR,
-        price: 4100,
-        image: ukulele,
-    },
-    {
-        vendorCode: 'MI193214',
-        name: 'Mirana V10',
-        type: GuitarType.UKULELE,
-        reviewsCount: 14,
-        stringsCount: StringsCount.FOUR,
-        price: 2700,
-        image: ukulele,
-    },
-    {
-        vendorCode: 'VO043244',
-        name: 'Виолана Mini',
-        type: GuitarType.UKULELE,
-        reviewsCount: 29,
-        stringsCount: StringsCount.FOUR,
-        price: 6700,
-        image: ukulele,
-    },
-];
+export const SortingType = {
+    PRICE: 'PRICE',
+    POPULAR: 'POPULAR',
+};
+
+export const SortingOrder = {
+    TO_LOW: 'high to low',
+    TO_HIGH: 'low to high',
+};
