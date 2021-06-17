@@ -14,6 +14,11 @@ const data = (state = initialState, action) => {
                 ...state,
                 activePage: action.payload
             };
+        case Actions.CHANGE_CURRENT_GUITARS:
+            return {
+                ...state,
+                currentGuitars: action.payload
+            };
         default:
             return state;
     }

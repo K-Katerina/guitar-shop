@@ -5,6 +5,11 @@ export const changeBasket = (payload) => ({
     payload: payload
 });
 
+export const changeCurrentGuitars = (payload) => ({
+    type: Actions.CHANGE_CURRENT_GUITARS,
+    payload: payload
+});
+
 export const changePage = (payload) => ({
     type: Actions.CHANGE_PAGE,
     payload: payload
