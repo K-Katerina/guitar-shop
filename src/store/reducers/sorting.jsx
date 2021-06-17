@@ -6,7 +6,6 @@ const initialState = {
 };
 
 const sorting = (state = initialState, action) => {
-    console.log(state.sortingType);
     switch (action.type) {
         case Actions.CHANGE_SORTING_TYPE:
             return {

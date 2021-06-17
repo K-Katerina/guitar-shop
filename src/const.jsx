@@ -25,15 +25,15 @@ export const ESC_CODE = 27;
 export const DEFAULT_PAGE = 1;
 
 export const GuitarType = {
+    ACOUSTIC: 'ACOUSTIC',
     ELECTRO: 'ELECTRO',
-    UKULELE: 'UKULELE',
-    ACOUSTIC: 'ACOUSTIC'
+    UKULELE: 'UKULELE'
 };
 
 export const GuitarTypeNames = {
+    ACOUSTIC: 'Акустическая гитара',
     ELECTRO: 'Электрогитара',
-    UKULELE: 'Укулеле',
-    ACOUSTIC: 'Акустическая гитара'
+    UKULELE: 'Укулеле'
 };
 
 export const StringsCount = {

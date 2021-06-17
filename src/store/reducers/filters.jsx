@@ -6,16 +6,16 @@ const getMinimumPrice = (guitars) => guitars.reduce((min, guitar) => guitar.pric
 const getMaximumPrice = (guitars) => guitars.reduce((max, guitar) => guitar.price > max ? guitar.price : max, guitars[0].price);
 
 const initialState = {
-    priceFrom: getMinimumPrice(GUITARS),
-    priceTo: getMaximumPrice(GUITARS),
+    priceFrom: '',
+    priceTo: '',
     minPrice: getMinimumPrice(GUITARS),
     maxPrice: getMaximumPrice(GUITARS),
-    guitarType: [GuitarType.ACOUSTIC, GuitarType.ELECTRO, GuitarType.UKULELE],
+    guitarTypes: [GuitarType.ACOUSTIC, GuitarType.ELECTRO, GuitarType.UKULELE],
     stringsCount: [StringsCount.FOUR, StringsCount.SIX, StringsCount.SEVEN, StringsCount.TWELVE]
 };
 
 const updateElementInArray = (el, array) => {
-    const index = array.findIndex((it) => it.id === el.id);
+    const index = array.findIndex((it) => it === el);
     if (index === -1) {
         return [...array, el];
     }
@@ -37,12 +37,12 @@ const filters = (state = initialState, action) => {
         case Actions.CHANGE_GUITAR_TYPES:
             return {
                 ...state,
-                guitarType: updateElementInArray(action.payload, ...state.guitarType)
+                guitarTypes: updateElementInArray(action.payload, state.guitarTypes)
             };
         case Actions.CHANGE_STRINGS_COUNT:
             return {
                 ...state,
-                stringsCount: updateElementInArray(action.payload, ...state.stringsCount)
+                stringsCount: updateElementInArray(action.payload, state.stringsCount)
             };
         default:
             return state;

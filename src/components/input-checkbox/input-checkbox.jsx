@@ -2,7 +2,6 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 const InputCheckbox = ({className, value, onChange, label}) => {
-
     return (
         <label className={`${className} input-checkbox`}>
             <input
