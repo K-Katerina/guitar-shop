@@ -1,5 +1,6 @@
 import PropTypes from 'prop-types';
 import React from 'react';
+import {useSelector} from 'react-redux';
 import {Link} from 'react-router-dom';
 import {AppRoute} from '../../const';
 import {ReactComponent as IconMap} from './icon-map.svg';
@@ -8,7 +9,7 @@ import {ReactComponent as IconBasket} from './icon-basket.svg';
 import {Logo} from '../logo/logo';
 
 const Header = ({className}) => {
-    const basketItemsCount = 2;
+    const basketItemsCount = useSelector(state => state.BASKET.basket.length);
 
     return (
         <header className={`header ${className}`}>

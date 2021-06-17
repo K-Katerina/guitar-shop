@@ -1,9 +1,9 @@
 import {Actions} from '../../const';
 
 const initialState = {
-    popupAddToBasketIsOpen: false,
-    popupRemoveFromBasketIsOpen: false,
-    popupSuccessInBasketIsOpen: false,
+    popupAddToBasket: {isOpen: false, id: 0},
+    popupRemoveFromBasket: {isOpen: false, id: 0},
+    popupSuccessInBasket: {isOpen: false, id: 0},
 };
 
 const popups = (state = initialState, action) => {
@@ -11,23 +11,17 @@ const popups = (state = initialState, action) => {
         case Actions.CHANGE_VISIBILITY_POPUP_ADD_TO_BASKET:
             return {
                 ...state,
-                popupAddToBasketIsOpen: action.payload,
-                popupRemoveFromBasketIsOpen: false,
-                popupSuccessInBasketIsOpen: false,
+                popupAddToBasket: {isOpen: action.payload.isOpen, id: action.payload.id},
             };
         case Actions.CHANGE_VISIBILITY_POPUP_REMOVE_FROM_BASKET:
             return {
                 ...state,
-                popupAddToBasketIsOpen: false,
-                popupRemoveFromBasketIsOpen: action.payload,
-                popupSuccessInBasketIsOpen: false,
+                popupRemoveFromBasket: {isOpen: action.payload.isOpen, id: action.payload.id},
             };
         case Actions.CHANGE_VISIBILITY_POPUP_SUCCESS_IN_BASKET:
             return {
                 ...state,
-                popupAddToBasketIsOpen: false,
-                popupRemoveFromBasketIsOpen: false,
-                popupSuccessInBasketIsOpen: action.payload,
+                popupSuccessInBasket: {isOpen: action.payload.isOpen, id: action.payload.id},
             };
         default:
             return state;

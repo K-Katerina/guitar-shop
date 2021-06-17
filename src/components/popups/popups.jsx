@@ -56,7 +56,7 @@ const PopupAddToBasket = ({className, item, onClose, onAddButtonClick}) => (
 );
 
 const PopupRemoveFromBasket = ({className, item, onClose, onRemoveButtonClick}) => (
-    <BasePopupWithContent isAdd item={item} onButtonClick={onRemoveButtonClick} onClose={onClose} className={`${className} popup--remove-from-basket`} />
+    <BasePopupWithContent item={item} onButtonClick={onRemoveButtonClick} onClose={onClose} className={`${className} popup--remove-from-basket`} />
 );
 
 const PopupSuccessInBasket = ({className, onClose}) => (
@@ -64,7 +64,7 @@ const PopupSuccessInBasket = ({className, onClose}) => (
             onClose={onClose}
             header="Товар успешно добавлен в корзину"
             >
-        <Link to={AppRoute.BASKET} className="go-to-basket-button">Перейти в корзину</Link>
+        <Link to={AppRoute.BASKET} onClick={onClose} className="go-to-basket-button">Перейти в корзину</Link>
         <Button nameButton="Продолжить покупки" className="continue-shopping-button" onClick={onClose}/>
     </Popups>
 );
@@ -77,9 +77,9 @@ Popups.propTypes = {
         title: PropTypes.string,
         vendorCode: PropTypes.string,
         guitarType: PropTypes.string,
-        price: PropTypes.string
+        price: PropTypes.number
     }),
-    children: PropTypes.arrayOf(PropTypes.object).isRequired
+    children: PropTypes.arrayOf(PropTypes.node).isRequired
 };
 
 BasePopupWithContent.propTypes = {
@@ -87,21 +87,21 @@ BasePopupWithContent.propTypes = {
     onClose: PropTypes.func.isRequired,
     onButtonClick: PropTypes.func.isRequired,
     className: PropTypes.string.isRequired,
-    item: GuitarAuthorPropType
+    item: GuitarAuthorPropType.isRequired
 };
 
 PopupAddToBasket.propTypes = {
     onClose: PropTypes.func.isRequired,
     onAddButtonClick: PropTypes.func.isRequired,
     className: PropTypes.string.isRequired,
-    item: GuitarAuthorPropType
+    item: GuitarAuthorPropType.isRequired
 };
 
 PopupRemoveFromBasket.propTypes = {
     onClose: PropTypes.func.isRequired,
     onRemoveButtonClick: PropTypes.func.isRequired,
     className: PropTypes.string.isRequired,
-    item: GuitarAuthorPropType
+    item: GuitarAuthorPropType.isRequired
 };
 
 PopupSuccessInBasket.propTypes = {

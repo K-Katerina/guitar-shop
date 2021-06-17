@@ -50,3 +50,11 @@ export const SortingOrder = {
     TO_LOW: 'high to low',
     TO_HIGH: 'low to high',
 };
+
+export const MAX_PERCENT_DISCOUNT = 0.3;
+
+export const PromoCodes = {
+    GITARAHIT: 0.1, // даёт скидку 10%
+    SUPERGITARA: 700, // скидка 700 рублей
+    GITARA2020: 3500 //скидка 3500 рублей, но не больше MAX_PERCENT_DISCOUNT от заказа.
+};
