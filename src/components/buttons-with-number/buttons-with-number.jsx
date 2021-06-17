@@ -15,7 +15,7 @@ const ButtonsWithNumber = ({className, onChange, value = 1}) => {
             case NamesButton.PLUS:
                 return onChange(Number(value) + 1);
             default:
-                return onChange(Number(target));
+                return onChange(Number.parseFloat(target) > 0 ? Number.parseFloat(target) : value);
         }
     };
 
