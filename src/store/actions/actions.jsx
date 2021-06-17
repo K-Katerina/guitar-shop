@@ -50,7 +50,12 @@ export const changeSortingType = (payload) => ({
     payload: payload
 });
 
-export const changeSortingOrder= (payload) => ({
+export const changeSortingOrder = (payload) => ({
     type: Actions.CHANGE_SORTING_ORDER,
+    payload: payload
+});
+
+export const changePromoCode = (payload) => ({
+    type: Actions.CHANGE_PROMO_CODE,
     payload: payload
 });

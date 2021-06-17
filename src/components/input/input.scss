@@ -6,12 +6,18 @@
   &--error .input__block {
     border-color: $color-error;
   }
+
+  &--error .input__label {
+    color: $color-error;
+  }
 }
 
 .input__block {
   @include input-field;
 }
 
-.input__error {
-  color: $color-error;
+.input__label {
+  @include label;
+  position: absolute;
+  bottom: -5px;
 }

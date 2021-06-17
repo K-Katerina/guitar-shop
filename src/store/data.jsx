@@ -278,6 +278,16 @@ export const GUITARS = [
         price: 6700,
         image: ukulele,
     },
+    {
+        id: 28,
+        vendorCode: 'VO0432844',
+        name: 'Виолана Mini',
+        type: GuitarType.UKULELE,
+        reviewsCount: 29,
+        stringsCount: StringsCount.FOUR,
+        price: 6700,
+        image: ukulele,
+    },
 ];
 
 export const GuitarAuthorPropType = PropTypes.shape({

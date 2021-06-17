@@ -1,16 +1,49 @@
-import React from 'react';
-import {useSelector} from 'react-redux';
-import {AppRoute} from '../../const';
+import React, {useState} from 'react';
+import {useDispatch, useSelector} from 'react-redux';
+import {AppRoute, MAX_PERCENT_DISCOUNT, PromoCodes, PromoCodesInterpretation} from '../../const';
+import {changePromoCode} from '../../store/actions/actions';
 import {Breadcrumbs} from '../breadcrumbs/breadcrumbs';
 import {Button} from '../button/button';
 import {Input} from '../input/input';
 import {ProductBasket} from '../product-basket/product-basket';
 
-const getTotalSum = (basket) => basket.reduce((sum, item) => (item.guitar.price * item.count) + sum, 0);
+const getTotalSum = (basket, promoCode) => {
+    const clearSum = basket.reduce((sum, item) => (item.guitar.price * item.count) + sum, 0);
+    const maxPercentDiscount = clearSum * MAX_PERCENT_DISCOUNT;
+
+    switch (promoCode) {
+        case PromoCodes.GITARAHIT:
+            return clearSum -  (clearSum * PromoCodesInterpretation.GITARAHIT);
+        case PromoCodes.SUPERGITARA:
+            return clearSum - PromoCodesInterpretation.SUPERGITARA;
+        case PromoCodes.GITARA2020:
+            return PromoCodesInterpretation.GITARA2020 > maxPercentDiscount ? clearSum - maxPercentDiscount : clearSum - PromoCodesInterpretation.GITARA2020;
+        default:
+            return clearSum;
+    }
+};
 
 const MainBasket = () => {
+    const dispatch = useDispatch();
     const breadcrumbs = [{title: 'Каталог', url: AppRoute.CATALOG}, {title: 'Оформляем', url: AppRoute.BASKET}];
     const basket =  useSelector(state => state.BASKET.basket);
+    const promoCode =  useSelector(state => state.BASKET.promoCode);
+    const [inputValue, setInputValue] = useState(promoCode);
+    const [error, setError] = useState('');
+
+    const onInputChange = (evt) => {
+        setError('');
+        setInputValue(String(evt.target.value).toUpperCase());
+    };
+
+    const onApplyButtonClick = () =>  {
+        if (PromoCodes[inputValue]) {
+            setError('');
+            dispatch(changePromoCode(inputValue));
+        } else {
+            setError('Введен неверный промокод');
+        }
+    };
 
     return (
         <main className="main wrapper">
@@ -33,20 +66,21 @@ const MainBasket = () => {
                             className="promocode__input"
                             type="text"
                             name="promocode"
-                            onChange={()=>{}}
+                            value={inputValue}
+                            error={error}
+                            onChange={onInputChange}
                         />
                         <Button
-                            onClick={()=>{}}
+                            onClick={onApplyButtonClick}
                             className="promocode__button"
                             type="button"
                             nameButton="Применить купон"
                         />
-                        {false && 'Ошибка'}
                     </div>
                 </div>
 
                 <div className="summary__wrapper">
-                    <p className="summary__total">Всего: {getTotalSum(basket).toLocaleString()} ₽</p>
+                    <p className="summary__total">Всего: {getTotalSum(basket, promoCode).toLocaleString()} ₽</p>
                     <a href="#" className="summary__submit">Оформить заказ</a>
                 </div>
             </section>
