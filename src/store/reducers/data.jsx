@@ -3,8 +3,8 @@ import {getFilteredNewCurrentGuitars} from '../../utils';
 import {GUITARS} from '../data';
 
 const initialState = {
-    originalGuitars: GUITARS,
-    currentGuitars: GUITARS,
+    originalGuitars: [...GUITARS],
+    currentGuitars: [...GUITARS],
     activePage: DEFAULT_PAGE,
 };
 

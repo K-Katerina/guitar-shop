@@ -3,8 +3,8 @@ import {Actions, GuitarType, StringsCount} from '../../const';
 const initialState = {
     priceFrom: '',
     priceTo: '',
-    guitarTypes: [GuitarType.ACOUSTIC, GuitarType.ELECTRO, GuitarType.UKULELE],
-    stringsCount: [StringsCount.FOUR, StringsCount.SIX, StringsCount.SEVEN, StringsCount.TWELVE]
+    guitarTypes: [...Object.values(GuitarType)],
+    stringsCount: [...Object.values(StringsCount)]
 };
 
 const updateElementInArray = (el, array) => {

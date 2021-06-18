@@ -20,9 +20,11 @@ const Filters = ({className}) => {
     const priceTo = useSelector(state => state.FILTERS.priceTo);
     const guitarTypes = useSelector(state => state.FILTERS.guitarTypes);
     const stringsCount = useSelector(state => state.FILTERS.stringsCount);
-    const guitars = useSelector(state => getFilteredNewCurrentGuitars(state.DATA.originalGuitars, {priceFrom: '', priceTo: '', guitarTypes, stringsCount}));
-    const minPrice = guitars.length && getMinimumPrice(guitars);
-    const maxPrice = guitars.length && getMaximumPrice(guitars);
+    const allGuitarsWithoutPrice = useSelector(state => getFilteredNewCurrentGuitars(state.DATA.originalGuitars, {priceFrom: '', priceTo: '', guitarTypes, stringsCount}));
+    const minPrice = allGuitarsWithoutPrice.length && getMinimumPrice(allGuitarsWithoutPrice);
+    const maxPrice = allGuitarsWithoutPrice.length && getMaximumPrice(allGuitarsWithoutPrice);
+    const allGuitarsWithoutStringsCount = useSelector(state => getFilteredNewCurrentGuitars(state.DATA.originalGuitars, {priceFrom, priceTo, guitarTypes, stringsCount: [...Object.values(StringsCount)]}));
+    const stringsCountNotDisabled = new Set(allGuitarsWithoutStringsCount.map(guitar => guitar.stringsCount));
 
     const onBeginPricesChange = (value) => {
         dispatch(changePriceFrom(Number(value)));
@@ -62,7 +64,6 @@ const Filters = ({className}) => {
                         label={GuitarTypeNames[item]}
                         name={item}
                         onChange={() => onGuitarTypesChange(item)}
-                        disabled={false}
                         value={!!guitarTypes.includes(item)}
                     />
                 ))}
@@ -76,7 +77,7 @@ const Filters = ({className}) => {
                         label={StringsCount[item]}
                         name={item}
                         onChange={() => onStringsCountChange(StringsCount[item])}
-                        disabled={false}
+                        disabled={!stringsCountNotDisabled.has(StringsCount[item])}
                         value={!!stringsCount.includes(StringsCount[item])}
                     />
                 ))}
