@@ -1,4 +1,4 @@
-import {Actions, SortingTypes} from '../../const';
+import {Actions, SortingOrders, SortingTypes} from '../../const';
 
 const initialState = {
     sortingType: null,
@@ -10,7 +10,8 @@ const sorting = (state = initialState, action) => {
         case Actions.CHANGE_SORTING_TYPE:
             return {
                 ...state,
-                sortingType: action.payload
+                sortingType: action.payload,
+                sortingOrder: state.sortingOrder ? state.sortingOrder : SortingOrders.TO_HIGH
             };
         case Actions.CHANGE_SORTING_ORDER:
             return {

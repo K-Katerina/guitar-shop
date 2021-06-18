@@ -2,7 +2,14 @@ import PropTypes from 'prop-types';
 import React from 'react';
 import {useDispatch, useSelector} from 'react-redux';
 import {GuitarTypeNames, StringsCount} from '../../const';
-import {changeGuitarTypes, changePriceFrom, changePriceTo, changeStringsCount} from '../../store/actions/actions';
+import {
+    changeCurrentGuitars,
+    changeGuitarTypes,
+    changePriceFrom,
+    changePriceTo,
+    changeStringsCount
+} from '../../store/actions/actions';
+import {getFilteredNewCurrentGuitars, getMaximumPrice, getMinimumPrice} from '../../utils';
 import {Button} from '../button/button';
 import {InputCheckbox} from '../input-checkbox/input-checkbox';
 import {Input} from '../input/input';
@@ -11,10 +18,11 @@ const Filters = ({className}) => {
     const dispatch = useDispatch();
     const priceFrom = useSelector(state => state.FILTERS.priceFrom);
     const priceTo = useSelector(state => state.FILTERS.priceTo);
-    const minPrice = useSelector(state => state.FILTERS.minPrice);
-    const maxPrice = useSelector(state => state.FILTERS.maxPrice);
     const guitarTypes = useSelector(state => state.FILTERS.guitarTypes);
     const stringsCount = useSelector(state => state.FILTERS.stringsCount);
+    const guitars = useSelector(state => getFilteredNewCurrentGuitars(state.DATA.originalGuitars, {priceFrom: '', priceTo: '', guitarTypes, stringsCount}));
+    const minPrice = guitars.length && getMinimumPrice(guitars);
+    const maxPrice = guitars.length && getMaximumPrice(guitars);
 
     const onBeginPricesChange = (value) => {
         dispatch(changePriceFrom(Number(value)));
@@ -33,9 +41,7 @@ const Filters = ({className}) => {
     };
 
     const onSubmitButtonClick = () => {
-        console.log(priceFrom, priceTo, minPrice, maxPrice);
-        console.log(guitarTypes);
-        console.log(stringsCount);
+        dispatch(changeCurrentGuitars({priceFrom, priceTo, guitarTypes, stringsCount}));
     };
 
     return (
@@ -43,9 +49,9 @@ const Filters = ({className}) => {
             <h2 className="filters__title">Фильтр</h2>
             <div className="filters__block price-block">
                 <h3 className="filters__title price-block__title">Цена, ₽</h3>
-                <Input onChange={(evt) => onBeginPricesChange(evt.target.value)} value={priceFrom} className="price-block__begin" type="number" name="begin-price" placeholder={Number(minPrice).toLocaleString()}/>
+                <Input onInputChange={onBeginPricesChange} max={priceTo || maxPrice} min={minPrice} value={priceFrom} className="price-block__begin" name="begin-price" placeholder={Number(minPrice).toLocaleString()}/>
                 <span className="price-block__line">&nbsp;&mdash;&nbsp;</span>
-                <Input onChange={(evt) => onEndPricesChange(evt.target.value)} value={priceTo} className="price-block__end" type="number" name="end-price" placeholder={Number(maxPrice).toLocaleString()}/>
+                <Input onInputChange={onEndPricesChange} max={maxPrice} min={priceFrom || minPrice} value={priceTo} className="price-block__end" name="end-price" placeholder={Number(maxPrice).toLocaleString()}/>
             </div>
             <div className="filters__block type-block">
                 <h3 className="filters__title type-block__title">Тип гитар</h3>

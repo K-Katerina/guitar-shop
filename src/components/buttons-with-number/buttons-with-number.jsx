@@ -23,7 +23,7 @@ const ButtonsWithNumber = ({className, onChange, value = 1}) => {
         <div className={`buttons-with-number ${className}`}>
             <button onClick={(evt) => onValueChange(evt.target.name)} className="buttons-with-number__button buttons-with-number__button--minus" name={NamesButton.MINUS}>−</button>
             <input value={value}
-                   onChange={(value) => onValueChange(value.target.value)}
+                   onChange={(evt) => onValueChange(evt.target.value)}
                    className="buttons-with-number__value"/>
             <button onClick={(evt) => onValueChange(evt.target.name)} className="buttons-with-number__button buttons-with-number__button--plus" name={NamesButton.PLUS}>+</button>
         </div>

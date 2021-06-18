@@ -1,28 +1,44 @@
-import React from 'react';
+import React, {useState} from 'react';
 import PropTypes from 'prop-types';
+import NumberFormat from 'react-number-format';
 
-const Input = ({className, onChange, value, name, label, error = false, placeholder, type = 'text', autoFocus}) => {
+const Input = ({className, onInputChange, value, name, min, max, placeholder}) => {
+    const [currentValue, setCurrentValue] = useState(value);
+
+    const onValueChange = (target) => setCurrentValue(Number.parseFloat(target) >= 0 ? Number.parseFloat(target) : value);
+
+    const onBlur = () => {
+        if (currentValue > max) {
+            setCurrentValue(max);
+            return onInputChange(max);
+        } else if (currentValue < min) {
+            setCurrentValue(min);
+            return onInputChange(min);
+        }
+        return onInputChange(currentValue);
+    };
+
     return (
-        <label className={`${className} ${!!error && 'input--error'} input`}>
-            <input onChange={(evt) => onChange(evt)} className="input__block"
-                   value={value} name={name} placeholder={placeholder} autoFocus={autoFocus} type={type}/>
-            <span className="input__label">
-              {label || error}
-            </span>
+        <label className={`${className} input`}>
+            <NumberFormat className="input__block"
+                          onBlur={onBlur}
+                          thousandSeparator={' '}
+                          value={currentValue}
+                          name={name}
+                          placeholder={placeholder}
+                          onValueChange={(evt) => onValueChange(evt.value)}/>
         </label>
     );
 };
 
 Input.propTypes = {
     className: PropTypes.string.isRequired,
-    onChange: PropTypes.func.isRequired,
+    onInputChange: PropTypes.func.isRequired,
     value: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
     name: PropTypes.string,
-    label: PropTypes.string,
-    type: PropTypes.string,
-    error: PropTypes.string,
+    min: PropTypes.number,
+    max: PropTypes.number,
     placeholder: PropTypes.string,
-    autoFocus: PropTypes.bool
 };
 
 export {Input};

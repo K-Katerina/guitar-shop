@@ -1,4 +1,5 @@
 import {Actions, DEFAULT_PAGE} from '../../const';
+import {getFilteredNewCurrentGuitars} from '../../utils';
 import {GUITARS} from '../data';
 
 const initialState = {
@@ -17,7 +18,8 @@ const data = (state = initialState, action) => {
         case Actions.CHANGE_CURRENT_GUITARS:
             return {
                 ...state,
-                currentGuitars: action.payload
+                currentGuitars: getFilteredNewCurrentGuitars(state.originalGuitars, action.payload),
+                activePage: DEFAULT_PAGE
             };
         default:
             return state;

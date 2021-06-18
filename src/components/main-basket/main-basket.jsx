@@ -4,7 +4,7 @@ import {AppRoute, MAX_PERCENT_DISCOUNT, PromoCodes, PromoCodesInterpretation} fr
 import {changePromoCode} from '../../store/actions/actions';
 import {Breadcrumbs} from '../breadcrumbs/breadcrumbs';
 import {Button} from '../button/button';
-import {Input} from '../input/input';
+import {InputText} from '../input-text/input';
 import {ProductBasket} from '../product-basket/product-basket';
 
 const getTotalSum = (basket, promoCode) => {
@@ -31,9 +31,9 @@ const MainBasket = () => {
     const [inputValue, setInputValue] = useState(promoCode);
     const [error, setError] = useState('');
 
-    const onInputChange = (evt) => {
+    const onInputChange = (target) => {
         setError('');
-        setInputValue(String(evt.target.value).toUpperCase());
+        setInputValue(String(target).toUpperCase());
     };
 
     const onApplyButtonClick = () =>  {
@@ -41,7 +41,7 @@ const MainBasket = () => {
             setError('');
             dispatch(changePromoCode(inputValue));
         } else {
-            setError('Введен неверный промокод');
+            setError('Промокод не действителен');
         }
     };
 
@@ -62,13 +62,12 @@ const MainBasket = () => {
                     <p className="promocode__desc">Введите свой промокод, если он у вас есть.</p>
 
                     <div className="promocode__wrapper">
-                        <Input
+                        <InputText
                             className="promocode__input"
-                            type="text"
                             name="promocode"
                             value={inputValue}
                             error={error}
-                            onChange={onInputChange}
+                            onInputChange={onInputChange}
                         />
                         <Button
                             onClick={onApplyButtonClick}
