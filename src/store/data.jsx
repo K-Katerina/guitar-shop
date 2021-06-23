@@ -300,5 +300,3 @@ export const GuitarAuthorPropType = PropTypes.shape({
     price: PropTypes.number,
     image: PropTypes.string,
 });
-
-export const GuitarsAuthorPropType = PropTypes.arrayOf(GuitarAuthorPropType);

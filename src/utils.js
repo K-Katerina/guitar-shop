@@ -22,14 +22,14 @@ export const getFilteredNewCurrentGuitars = (guitars, {priceFrom, priceTo, guita
 
 const getFilteredPrice = (array, priceFrom, priceTo) => {
     if (priceFrom && priceTo) {
-        return [...array].filter((item) => item.price >= priceFrom && item.price <= priceTo);
+        return array.filter((item) => item.price >= priceFrom && item.price <= priceTo);
     } else if (priceFrom) {
-        return [...array].filter((item) => item.price >= priceFrom);
+        return array.filter((item) => item.price >= priceFrom);
     } else if (priceTo) {
-        return [...array].filter((item) => item.price <= priceTo);
+        return array.filter((item) => item.price <= priceTo);
     }
     return array;
 };
 
-const getFilteredGuitarType = (array, guitarTypes) => [...array].filter((item) => guitarTypes.includes(item.type));
-const getFilteredStringsCount = (array, stringsCount) => [...array].filter((item) => stringsCount.includes(item.stringsCount));
+const getFilteredGuitarType = (array, guitarTypes) => array.filter((item) => guitarTypes.includes(item.type));
+const getFilteredStringsCount = (array, stringsCount) => array.filter((item) => stringsCount.includes(item.stringsCount));

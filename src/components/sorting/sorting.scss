@@ -18,9 +18,17 @@
 }
 
 .sorting__item {
+  display: flex;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 20px;
+  letter-spacing: 0.07em;
   cursor: pointer;
   color: $color-background--dark;
   margin-right: 35px;
+  background-color: transparent;
+  border: none;
+  text-decoration: none;
 
   &--img {
     margin: 0;

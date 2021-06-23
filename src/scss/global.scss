@@ -5,6 +5,7 @@ html, #root {
 }
 
 body, html {
+  font-family: "Droid Sans", "Arial", sans-serif;
   min-width: 960px;
   font-size: 14px;
   height: 100%;
@@ -14,16 +15,9 @@ body, html {
   background-color: $color-background;
 }
 
-main,
-article,
-section {
-  display: block;
-}
-
 *,
 *::before,
 *::after {
-  font-family: "Droid Sans", "Arial", sans-serif;
   box-sizing: border-box;
   margin: 0;
   padding: 0;

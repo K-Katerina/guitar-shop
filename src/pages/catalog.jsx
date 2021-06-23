@@ -6,7 +6,7 @@ import {MainCatalog as Main} from '../components/main-catalog/main-catalog';
 const Catalog = () => {
     return (
         <React.Fragment>
-            <Header/>
+            <Header className="header--catalog"/>
             <Main/>
             <Footer/>
         </React.Fragment>
