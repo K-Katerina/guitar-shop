@@ -9,8 +9,8 @@ const Logo = ({className, isLight = false}) => {
     return (
         <Link to={AppRoute.ROOT} className={`${className} logo`}>
             {isLight
-                ? <LogoLight alt="Логотип" className="logo__img"/>
-                : <LogoDark alt="Логотип" className="logo__img"/>
+                ? <LogoLight className="logo__img"/>
+                : <LogoDark className="logo__img"/>
             }
             <span className="visually-hidden">Главная страница</span>
         </Link>

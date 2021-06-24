@@ -34,17 +34,17 @@ const Header = ({className}) => {
                 <ul className="menu__navigation navigation">
                     <li className="navigation__item">
                         <a href="#" className="navigation__link">
-                            <IconMap alt="Карта" className="navigation__icon navigation__icon--map"/>
+                            <IconMap className="navigation__icon navigation__icon--map"/>
                         </a>
                     </li>
                     <li className="navigation__item">
                         <a href="#" className="navigation__link">
-                            <IconSearch alt="Поиск" className="navigation__icon navigation__icon--search" />
+                            <IconSearch className="navigation__icon navigation__icon--search" />
                         </a>
                     </li>
                     <li className="navigation__item">
                         <Link to={AppRoute.BASKET} className="navigation__link navigation__link--basket">
-                            <IconBasket alt="Корзина" className="navigation__icon navigation__icon--basket" />
+                            <IconBasket className="navigation__icon navigation__icon--basket" />
                         </Link>
                         {basketItemsCount > 0 && <span className="navigation__basket-items-count">{basketItemsCount}</span>}
                     </li>
