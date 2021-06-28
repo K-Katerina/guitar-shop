@@ -1,7 +1,7 @@
 import PropTypes from 'prop-types';
 import React from 'react';
 import {useDispatch, useSelector} from 'react-redux';
-import {GuitarTypeNames, StringsCount} from '../../const';
+import {GuitarType, GuitarTypeNames, StringsCount} from '../../const';
 import {
     changeCurrentGuitars,
     changeGuitarTypes,
@@ -20,7 +20,7 @@ const Filters = ({className}) => {
     const priceTo = useSelector(state => state.FILTERS.priceTo);
     const guitarTypes = useSelector(state => state.FILTERS.guitarTypes);
     const stringsCount = useSelector(state => state.FILTERS.stringsCount);
-    const allGuitarsWithoutPrice = useSelector(state => getFilteredNewCurrentGuitars(state.DATA.originalGuitars, {priceFrom: '', priceTo: '', guitarTypes, stringsCount}));
+    const allGuitarsWithoutPrice = useSelector(state => getFilteredNewCurrentGuitars(state.DATA.originalGuitars, {priceFrom: '', priceTo: '', guitarTypes: guitarTypes.length ? guitarTypes : [...Object.values(GuitarType)], stringsCount: stringsCount.length ? stringsCount : [...Object.values(StringsCount)]}));
     const minPrice = allGuitarsWithoutPrice.length && getMinimumPrice(allGuitarsWithoutPrice);
     const maxPrice = allGuitarsWithoutPrice.length && getMaximumPrice(allGuitarsWithoutPrice);
     const allGuitarsWithoutStringsCount = useSelector(state => getFilteredNewCurrentGuitars(state.DATA.originalGuitars, {priceFrom, priceTo, guitarTypes, stringsCount: [...Object.values(StringsCount)]}));
@@ -43,7 +43,7 @@ const Filters = ({className}) => {
     };
 
     const onSubmitButtonClick = () => {
-        dispatch(changeCurrentGuitars({priceFrom, priceTo, guitarTypes, stringsCount}));
+        dispatch(changeCurrentGuitars({priceFrom, priceTo, guitarTypes: guitarTypes.length ? guitarTypes : [...Object.values(GuitarType)], stringsCount: stringsCount.length ? stringsCount : [...Object.values(StringsCount)]}));
     };
 
     return (
@@ -51,9 +51,9 @@ const Filters = ({className}) => {
             <h2 className="filters__title">Фильтр</h2>
             <div className="filters__block price-block">
                 <h3 className="filters__title price-block__title">Цена, ₽</h3>
-                <Input onInputChange={onBeginPricesChange} max={priceTo || maxPrice} min={minPrice} value={priceFrom} className="price-block__begin" name="begin-price" placeholder={Number(minPrice).toLocaleString()}/>
+                <Input onInputChange={onBeginPricesChange} max={priceTo || maxPrice} min={minPrice} value={priceFrom} className="price-block__begin" name="begin-price" placeholder={Number(minPrice).toLocaleString('ru-RU')}/>
                 <span className="price-block__line">&nbsp;&mdash;&nbsp;</span>
-                <Input onInputChange={onEndPricesChange} max={maxPrice} min={priceFrom || minPrice} value={priceTo} className="price-block__end" name="end-price" placeholder={Number(maxPrice).toLocaleString()}/>
+                <Input onInputChange={onEndPricesChange} max={maxPrice} min={priceFrom || minPrice} value={priceTo} className="price-block__end" name="end-price" placeholder={Number(maxPrice).toLocaleString('ru-RU')}/>
             </div>
             <div className="filters__block type-block">
                 <h3 className="filters__title type-block__title">Тип гитар</h3>
@@ -77,7 +77,7 @@ const Filters = ({className}) => {
                         label={StringsCount[item]}
                         name={item}
                         onChange={() => onStringsCountChange(StringsCount[item])}
-                        disabled={!stringsCountNotDisabled.has(StringsCount[item])}
+                        disabled={guitarTypes.length > 0 && !stringsCountNotDisabled.has(StringsCount[item])}
                         value={!!stringsCount.includes(StringsCount[item])}
                     />
                 ))}

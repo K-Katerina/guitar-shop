@@ -5,10 +5,17 @@ import NumberFormat from 'react-number-format';
 const Input = ({className, onInputChange, value, name, min, max, placeholder}) => {
     const [currentValue, setCurrentValue] = useState(value);
 
-    const onValueChange = (target) => setCurrentValue(Number.parseFloat(target) >= 0 ? Number.parseFloat(target) : value);
+    const onValueChange = (target) => {
+        if (target === '') {
+            return setCurrentValue('');
+        }
+        return setCurrentValue(Number.parseFloat(target) >= 0 ? Number.parseFloat(target) : value);
+    };
 
     const onBlur = () => {
-        if (currentValue > max) {
+        if (currentValue === '')  {
+            return onInputChange(currentValue);
+        } else if (currentValue > max) {
             setCurrentValue(max);
             return onInputChange(max);
         } else if (currentValue < min) {

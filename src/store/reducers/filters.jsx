@@ -1,10 +1,10 @@
-import {Actions, GuitarType, StringsCount} from '../../const';
+import {Actions} from '../../const';
 
 const initialState = {
     priceFrom: '',
     priceTo: '',
-    guitarTypes: [...Object.values(GuitarType)],
-    stringsCount: [...Object.values(StringsCount)]
+    guitarTypes: [],
+    stringsCount: []
 };
 
 const updateElementInArray = (el, array) => {

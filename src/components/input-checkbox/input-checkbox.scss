@@ -57,10 +57,13 @@
 }
 
 .input-checkbox input:checked + span:after {
-  content: '\2304';
+  content: '';
+  background-image: url("./check.svg");
   position: absolute;
-  top: -1px;
-  left: 6px;
+  top: 5px;
+  left: 5px;
+  width: 14px;
+  height: 14px;
   font-size: 20px;
   color: $color-service--light;
 }
