@@ -1,5 +1,5 @@
 import PropTypes from 'prop-types';
-import React from 'react';
+import React, {useEffect} from 'react';
 import {useDispatch, useSelector} from 'react-redux';
 import {GuitarType, GuitarTypeNames, StringsCount} from '../../const';
 import {
@@ -23,8 +23,15 @@ const Filters = ({className}) => {
     const allGuitarsWithoutPrice = useSelector(state => getFilteredNewCurrentGuitars(state.DATA.originalGuitars, {priceFrom: '', priceTo: '', guitarTypes: guitarTypes.length ? guitarTypes : [...Object.values(GuitarType)], stringsCount: stringsCount.length ? stringsCount : [...Object.values(StringsCount)]}));
     const minPrice = allGuitarsWithoutPrice.length && getMinimumPrice(allGuitarsWithoutPrice);
     const maxPrice = allGuitarsWithoutPrice.length && getMaximumPrice(allGuitarsWithoutPrice);
-    const allGuitarsWithoutStringsCount = useSelector(state => getFilteredNewCurrentGuitars(state.DATA.originalGuitars, {priceFrom, priceTo, guitarTypes, stringsCount: [...Object.values(StringsCount)]}));
+    const allGuitarsWithoutStringsCount = useSelector(state => getFilteredNewCurrentGuitars(state.DATA.originalGuitars, {priceFrom, priceTo, guitarTypes: guitarTypes.length ? guitarTypes : [...Object.values(GuitarType)], stringsCount: [...Object.values(StringsCount)]}));
     const stringsCountNotDisabled = new Set(allGuitarsWithoutStringsCount.map(guitar => guitar.stringsCount));
+    const stringsDiffCount = useSelector(state => state.FILTERS.stringsCount).filter(string => !stringsCountNotDisabled.has(string));
+
+    useEffect(() => {
+        stringsDiffCount.forEach((element) => {
+            dispatch(changeStringsCount(element));
+        });
+    }, [stringsDiffCount]);
 
     const onBeginPricesChange = (value) => {
         dispatch(changePriceFrom(Number(value)));
