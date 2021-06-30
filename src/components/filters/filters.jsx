@@ -23,8 +23,9 @@ const Filters = ({className}) => {
     const allGuitarsWithoutPrice = useSelector(state => getFilteredNewCurrentGuitars(state.DATA.originalGuitars, {priceFrom: '', priceTo: '', guitarTypes: guitarTypes.length ? guitarTypes : [...Object.values(GuitarType)], stringsCount: stringsCount.length ? stringsCount : [...Object.values(StringsCount)]}));
     const minPrice = allGuitarsWithoutPrice.length && getMinimumPrice(allGuitarsWithoutPrice);
     const maxPrice = allGuitarsWithoutPrice.length && getMaximumPrice(allGuitarsWithoutPrice);
-    const allGuitarsWithoutStringsCount = useSelector(state => getFilteredNewCurrentGuitars(state.DATA.originalGuitars, {priceFrom, priceTo, guitarTypes, stringsCount: [...Object.values(StringsCount)]}));
+    const allGuitarsWithoutStringsCount = useSelector(state => getFilteredNewCurrentGuitars(state.DATA.originalGuitars, {priceFrom, priceTo, guitarTypes: guitarTypes.length ? guitarTypes : [...Object.values(GuitarType)], stringsCount: [...Object.values(StringsCount)]}));
     const stringsCountNotDisabled = new Set(allGuitarsWithoutStringsCount.map(guitar => guitar.stringsCount));
+    const stringsDiffCount = useSelector(state => state.FILTERS.stringsCount).filter(string => !stringsCountNotDisabled.has(string));
 
     const onBeginPricesChange = (value) => {
         dispatch(changePriceFrom(Number(value)));
@@ -36,6 +37,9 @@ const Filters = ({className}) => {
 
     const onGuitarTypesChange = (type) => {
         dispatch(changeGuitarTypes(type));
+        stringsDiffCount.forEach((element) => {
+            dispatch(changeStringsCount(element));
+        });
     };
 
     const onStringsCountChange = (count) => {
