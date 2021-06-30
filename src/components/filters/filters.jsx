@@ -21,11 +21,11 @@ const Filters = ({className}) => {
     const guitarTypes = useSelector(state => state.FILTERS.guitarTypes);
     const stringsCount = useSelector(state => state.FILTERS.stringsCount);
     const allGuitarsWithoutPrice = useSelector(state => getFilteredNewCurrentGuitars(state.DATA.originalGuitars, {priceFrom: '', priceTo: '', guitarTypes: guitarTypes.length ? guitarTypes : [...Object.values(GuitarType)], stringsCount: stringsCount.length ? stringsCount : [...Object.values(StringsCount)]}));
-    const minPrice = allGuitarsWithoutPrice.length && getMinimumPrice(allGuitarsWithoutPrice);
-    const maxPrice = allGuitarsWithoutPrice.length && getMaximumPrice(allGuitarsWithoutPrice);
     const allGuitarsWithoutStringsCount = useSelector(state => getFilteredNewCurrentGuitars(state.DATA.originalGuitars, {priceFrom, priceTo, guitarTypes: guitarTypes.length ? guitarTypes : [...Object.values(GuitarType)], stringsCount: [...Object.values(StringsCount)]}));
     const stringsCountNotDisabled = new Set(allGuitarsWithoutStringsCount.map(guitar => guitar.stringsCount));
     const stringsDiffCount = useSelector(state => state.FILTERS.stringsCount).filter(string => !stringsCountNotDisabled.has(string));
+    const minPrice = allGuitarsWithoutPrice.length && getMinimumPrice(allGuitarsWithoutPrice);
+    const maxPrice = allGuitarsWithoutPrice.length && getMaximumPrice(allGuitarsWithoutPrice);
 
     useEffect(() => {
         stringsDiffCount.forEach((element) => {
